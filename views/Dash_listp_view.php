@@ -67,11 +67,12 @@
                                             <table class="table table-striped table-bordered">
                                                 <thead>
                                                     <tr>
-                                                        <th scope="col">Opciones</th>
+                                                        <th scope="col" style="min-width: 100px;">Opciones</th>
                                                         <th scope="col">Título</th>
                                                         <th scope="col">Tipo</th>
                                                         <th scope="col">Url</th>
                                                         <th scope="col">Región</th>
+                                                        <th scope="col">Fecha de creación</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -82,6 +83,7 @@
                                                         <th><?= $publication['type']; ?></th>
                                                         <th><?= $publication['link']; ?></th>
                                                         <th><?= $publication['region']; ?></th>
+                                                        <th><?= $publication['create_date']; ?></th>
                                                     </tr>
                                                     <?php endforeach; ?>
                                                 </tbody>

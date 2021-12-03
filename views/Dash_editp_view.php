@@ -54,17 +54,17 @@
                 <div class="col-lg-12">
                     <div class="ibox ">
                         <div class="ibox-title">
-                            <h5>Crear publicación </h5>
+                            <h5>Editar publicación </h5>
                         </div>
                         <div class="ibox-content">
-                            <?php if($flagCP): ?>
+                            <?php if($flagEP): ?>
                                 <div class="alert alert-success mt-2" role="alert">
-                                    Publicación creada correctamente.!
+                                    Publicación editada correctamente.!
                                 </div>
                             <?php endif; ?>
-                            <form class="row" method="post" action="<?= $_ENV['ROOT'] ?>/controllers/actions/publication/create.php" >
+                            <form class="row" method="post" action="<?= $_ENV['ROOT'] ?>/controllers/actions/publication/edit.php" >
                                 <!-- <h3 class="col-12 text-navy">Datos basicos del inmueble</h3> -->
-                                
+                                <input type="hidden" name="id" value="<?= $publication['id']; ?>">
                                 <div class="mb-3 col-sm-6 col-lg-4">
                                     <label for="">Titulo de publicación</label>
                                     <input type="text" class="form-control" name="title" value="<?= $publication['title']; ?>">
@@ -73,42 +73,49 @@
                                     <label for="">Tipo de publicación</label>
                                     <select name="type" class="form-control" id="">
                                         <option value="0">Seleccione una opción</option>
-                                        <option value="1">Prácticas</option>
-                                        <option value="2">1eros empleos</option>
-                                        <option value="3">Profesionales</option>
+                                        <option value="1" <?= ($publication['type'] == 'Prácticas')? 'selected' : ''; ?>>Prácticas</option>
+                                        <option value="2" <?= ($publication['type'] == '1eros empleos profesionales')? 'selected' : ''; ?>>1eros empleos</option>
+                                        <option value="3" <?= ($publication['type'] == 'Otros / Pitutos / Part time')? 'selected' : ''; ?>>Profesionales</option>
                                     </select>
                                 </div>
+                                <!-- <div class="mb-3 col-sm-6 col-lg-4">
+                                    <label for="">Descripción corta</label>
+                                    <textarea name="description-short" class="form-control"><?= $publication['description_short']; ?></textarea>
+                                </div> -->
                                 <div class="mb-3 col-12">
                                     <label for="">Descripción</label>
-                                    <div id="my-editor"></div>
+                                    <div id="my-editor"><?= $publication['description']; ?></div>
                                 </div>
                                 <div class="mb-3 col-sm-6 col-lg-4">
                                     <label for="">Link</label>
-                                    <input type="text" class="form-control" name="link">
+                                    <input type="text" class="form-control" name="link" value="<?= $publication['link']; ?>">
                                 </div>
                                 <div class="mb-3 col-sm-6 col-lg-4">
                                     <label for="">Región</label>
                                     <select name="region" class="form-control" id="">
                                         <option value="0">Seleccione una opción</option>
-                                        <option value="1">XV - Arica y Parinacota</option>
-                                        <option value="2">I - Tarapacá</option>
-                                        <option value="3">II - Antofagasta</option>
-                                        <option value="4">III - Atacama</option>
-                                        <option value="5">IV - Coquimbo</option>
-                                        <option value="6">V - Valparaiso</option>
-                                        <option value="7">RM - Metropolitana de Santiago</option>
-                                        <option value="8">VI - Libertador General Bernardo O'Higgins</option>
-                                        <option value="9">VII - Maule</option>
-                                        <option value="10">XVI - Ñuble</option>
-                                        <option value="11">VIII - Biobío</option>
-                                        <option value="12">IX - La Araucanía</option>
-                                        <option value="13">XIV - Los Ríos</option>
-                                        <option value="14">X - Los Lagos</option>
-                                        <option value="15">XI - Aysén del General Carlos Ibáñez del Campo</option>
-                                        <option value="16">XII - Magallanes y de la Antártica Chilena</option>
+                                        <option value="1" <?= ($publication['region'] == 'XV - Arica y Parinacota')? 'selected' : ''; ?>>XV - Arica y Parinacota</option>
+                                        <option value="2" <?= ($publication['region'] == 'I - Tarapacá')? 'selected' : ''; ?>>I - Tarapacá</option>
+                                        <option value="3" <?= ($publication['region'] == 'II - Antofagasta')? 'selected' : ''; ?>>II - Antofagasta</option>
+                                        <option value="4" <?= ($publication['region'] == 'III - Atacama')? 'selected' : ''; ?>>III - Atacama</option>
+                                        <option value="5" <?= ($publication['region'] == 'IV - Coquimbo')? 'selected' : ''; ?>>IV - Coquimbo</option>
+                                        <option value="6" <?= ($publication['region'] == 'V - Valparaiso')? 'selected' : ''; ?>>V - Valparaiso</option>
+                                        <option value="7" <?= ($publication['region'] == 'RM - Metropolitana de Santiago')? 'selected' : ''; ?>>RM - Metropolitana de Santiago</option>
+                                        <option value="8" <?= ($publication['region'] == "VI - Libertador General Bernardo O'Higgins")? 'selected' : ''; ?>>VI - Libertador General Bernardo O'Higgins</option>
+                                        <option value="9" <?= ($publication['region'] == 'VII - Maule')? 'selected' : ''; ?>>VII - Maule</option>
+                                        <option value="10" <?= ($publication['region'] == 'XVI - Ñuble')? 'selected' : ''; ?>>XVI - Ñuble</option>
+                                        <option value="11" <?= ($publication['region'] == 'VIII - Biobío')? 'selected' : ''; ?>>VIII - Biobío</option>
+                                        <option value="12" <?= ($publication['region'] == 'IX - La Araucanía')? 'selected' : ''; ?>>IX - La Araucanía</option>
+                                        <option value="13" <?= ($publication['region'] == 'XIV - Los Ríos')? 'selected' : ''; ?>>XIV - Los Ríos</option>
+                                        <option value="14" <?= ($publication['region'] == 'X - Los Lagos')? 'selected' : ''; ?>>X - Los Lagos</option>
+                                        <option value="15" <?= ($publication['region'] == 'XI - Aysén del General Carlos Ibáñez del Campo')? 'selected' : ''; ?>>XI - Aysén del General Carlos Ibáñez del Campo</option>
+                                        <option value="16" <?= ($publication['region'] == 'XII - Magallanes y de la Antártica Chilena')? 'selected' : ''; ?>>XII - Magallanes y de la Antártica Chilena</option>
                                     </select>
                                 </div>
-                            
+                                <div class="mb-3 col-sm-6 col-lg-4">
+                                    <label for="">Fecha de creación</label>
+                                    <input type="date" class="form-control" name="create-date" value="<?= $publication['create_date']; ?>">
+                                </div>
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary">Guardar</button>
                                 </div>

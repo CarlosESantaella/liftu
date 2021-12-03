@@ -18,14 +18,15 @@
             <li <?= ($menu == 'publication')? "class='active'" : ''; ?>>
                 <a href="index.html"><i class="fa fa-folder" aria-hidden="true"></i> <span class="nav-label">Publicaciones</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse in" aria-expanded="true" style="">
-                    <li <?= ($submenu == 'create')? "class='active'" : ''; ?>><a href="<?= ($submenu == 'create')? '#' : $_ENV['ROOT'].'/dashboard/create-publication'; ?>">Crear</a></li>
-                    <li <?= ($submenu == 'list')? "class='active'" : ''; ?>><a href="<?= ($submenu == 'list')? '#' : $_ENV['ROOT'].'/dashboard/list-publications'; ?>">Listar</a></li>
+                    <li <?= ($submenu == 'createp')? "class='active'" : ''; ?>><a href="<?= ($submenu == 'createp')? '#' : $_ENV['ROOT'].'/dashboard/create-publication'; ?>">Crear</a></li>
+                    <li <?= ($submenu == 'listp')? "class='active'" : ''; ?>><a href="<?= ($submenu == 'listp')? '#' : $_ENV['ROOT'].'/dashboard/list-publications'; ?>">Listar</a></li>
+                    <li <?= ($submenu == 'editp')? "class='active'" : ''; ?>><a href="#">Editar</a></li>
                 </ul>
             </li>
-            <li >
+            <li <?= ($menu == 'article')? "class='active'" : ''; ?>>
                 <a href="index.html"><i class="fa fa-book" aria-hidden="true"></i> <span class="nav-label">Artículos</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" aria-expanded="true" style="">
-                    <li><a href="#">Crear</a></li>
+                    <li <?= ($submenu == 'createa')? "class='active'" : ''; ?>><a href="<?= ($submenu == 'createa')? '#' : $_ENV['ROOT'].'/dashboard/create-article'; ?>">Crear</a></li>
                     <li><a href="#">Eliminar</a></li>
                 </ul>
             </li>

@@ -5,6 +5,17 @@
     $dotenv->load();
     use App\Publications;
     $pubM = new Publications;
+    $menu = 'publication';
+    $submenu = 'editp';
+
+    $flagEP = false;
+
+    if(isset($_COOKIE['editp'])){
+        if($_COOKIE['editp'] == 'si'){
+            $flagEP = true;
+            setcookie('editp', 'no', time() - 60, "/");
+        }
+    }
 
     $id = $_GET['id'];
 

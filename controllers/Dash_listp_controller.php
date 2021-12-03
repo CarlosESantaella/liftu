@@ -8,7 +8,7 @@
     $pubM = new Publications;
 
     $menu = 'publication';
-    $submenu = 'list';
+    $submenu = 'listp';
 
     $flagDP = false;
 

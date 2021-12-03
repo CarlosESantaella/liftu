@@ -78,6 +78,10 @@
                                         <option value="3">Profesionales</option>
                                     </select>
                                 </div>
+                                <!-- <div class="mb-3 col-sm-6 col-lg-4">
+                                    <label for="">Descripción corta</label>
+                                    <textarea name="description-short" class="form-control"></textarea>
+                                </div> -->
                                 <div class="mb-3 col-12">
                                     <label for="">Descripción</label>
                                     <div id="my-editor"></div>
@@ -108,7 +112,10 @@
                                         <option value="16">XII - Magallanes y de la Antártica Chilena</option>
                                     </select>
                                 </div>
-                            
+                                <div class="mb-3 col-sm-6 col-lg-4">
+                                    <label for="">Fecha de creación</label>
+                                    <input type="date" class="form-control" name="create-date">
+                                </div>
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary">Guardar</button>
                                 </div>

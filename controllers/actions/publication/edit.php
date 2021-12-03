@@ -15,10 +15,12 @@
     $description = $_POST['my-editor'];
     $link = $_POST['link'];
     $region = $_POST['region'];
+    $id = $_POST['id'];
     $date = $_POST['create-date'];
 
-    $pubM->set_publication($title, $type, $description, $link, $region, $date);
 
-    setcookie('createp', 'si', time() + (86400 * 30), "/");
-    header('location: '.$_ENV['ROOT'].'/dashboard/create-publication');
+    $pubM->update_publication_id($title, $type, $description, $link, $region, $date, $id);
+
+    setcookie('editp', 'si', time() + (86400 * 30), "/");
+    header('location: '.$_ENV['ROOT']."/dashboard/edit-publication/$id");
 ?>

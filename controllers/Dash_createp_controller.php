@@ -5,7 +5,7 @@
     $dotenv->load();
     $flagCP = false;
     $menu = 'publication';
-    $submenu = 'create';
+    $submenu = 'createp';
 
     if(isset($_COOKIE['createp'])){
         if($_COOKIE['createp'] == 'si'){
