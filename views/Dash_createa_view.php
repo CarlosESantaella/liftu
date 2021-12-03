@@ -100,7 +100,7 @@
                                                 <label for="">Imagen</label>
                                                 <div class="input-group mb-3">
                                                     <div class="custom-file">
-                                                        <input type="file" accept="image/*" class="custom-file-input"
+                                                        <input type="file" accept="image/*" name="image" class="custom-file-input"
                                                             id="inputGroupFile01"
                                                             aria-describedby="inputGroupFileAddon01">
                                                         <label class="custom-file-label" for="inputGroupFile01">Elige la imagen</label>
