@@ -18,8 +18,8 @@
             <li <?= ($menu == 'publication')? "class='active'" : ''; ?>>
                 <a href="index.html"><i class="fa fa-folder" aria-hidden="true"></i> <span class="nav-label">Publicaciones</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse in" aria-expanded="true" style="">
-                    <li <?= ($submenu == 'create')? "class='active'" : ''; ?>><a href="#">Crear</a></li>
-                    <li><a href="#">Eliminar</a></li>
+                    <li <?= ($submenu == 'create')? "class='active'" : ''; ?>><a href="<?= ($submenu == 'create')? '#' : $_ENV['ROOT'].'/dashboard/create-publication'; ?>">Crear</a></li>
+                    <li <?= ($submenu == 'list')? "class='active'" : ''; ?>><a href="<?= ($submenu == 'list')? '#' : $_ENV['ROOT'].'/dashboard/list-publications'; ?>">Listar</a></li>
                 </ul>
             </li>
             <li >

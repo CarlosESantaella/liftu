@@ -7,6 +7,13 @@
     $menu = 'publication';
     $submenu = 'create';
 
+    if(isset($_COOKIE['createp'])){
+        if($_COOKIE['createp'] == 'si'){
+            $flagCP = true;
+            setcookie('createp', 'no', time() - 60, "/");
+        }
+    }
+
     
     include($_SERVER['DOCUMENT_ROOT'].'/views/Dash_createp_view.php');
 

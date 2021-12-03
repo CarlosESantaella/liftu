@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>LiftU | crear publicación</title>
+    <title>LiftU | editar publicación</title>
 
     <link href="<?= $_ENV['ROOT'] ?>/assets/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
@@ -40,7 +40,7 @@
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
                         <a href="#">
-                            <i class="fas fa-sign-out-alt"></i> Salir
+                            <i class="fas fa-sign-out-alt"></i> Salir 
                         </a>
                     </li>
                 </ul>
@@ -54,7 +54,7 @@
                 <div class="col-lg-12">
                     <div class="ibox ">
                         <div class="ibox-title">
-                            <h5>Crear publicación</h5>
+                            <h5>Crear publicación </h5>
                         </div>
                         <div class="ibox-content">
                             <?php if($flagCP): ?>
@@ -67,7 +67,7 @@
                                 
                                 <div class="mb-3 col-sm-6 col-lg-4">
                                     <label for="">Titulo de publicación</label>
-                                    <input type="text" class="form-control" name="title">
+                                    <input type="text" class="form-control" name="title" value="<?= $publication['title']; ?>">
                                 </div>
                                 <div class="mb-3 col-sm-6 col-lg-4">
                                     <label for="">Tipo de publicación</label>
