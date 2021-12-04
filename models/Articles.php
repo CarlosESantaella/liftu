@@ -26,6 +26,28 @@
                 die('error: '.$e->getMessage().' on '.$e->getLine());
             }
         }
+
+        public function get_articles(){
+            try{
+                $stmt = $this->conn->prepare('SELECT * FROM articles');
+                $stmt->execute();
+                $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $articles;
+            }catch(PDOException $e){
+                die('error: '.$e->getMessage().' on '.$e->getLine());
+            }
+        }
+
+        public function delete_article($id){
+            try{
+                $stmt = $this->conn->prepare('DELETE FROM articles WHERE id = :id');
+                $stmt->bindParam(':id', $id);
+                $stmt->execute();
+            }catch(PDOException $e){
+                die('error: '.$e->getMessage());
+            }
+        }
+
     }
 
 ?>

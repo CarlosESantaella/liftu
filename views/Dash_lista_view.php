@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>LiftU | listar publicación</title>
+    <title>LiftU | listar artículos</title>
 
     <link href="<?= $_ENV['ROOT'] ?>/assets/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
@@ -14,9 +14,6 @@
 
     <link href="<?= $_ENV['ROOT'] ?>/assets/css/animate.css" rel="stylesheet">
     <link href="<?= $_ENV['ROOT'] ?>/assets/css/style.css" rel="stylesheet">
-    <style>
-
-    </style>
 
 </head>
 
@@ -55,12 +52,12 @@
                             <div class="col-lg-12">
                                 <div class="ibox ">
                                     <div class="ibox-title">
-                                        <h5>Publicaciones</h5>
+                                        <h5>Artículos</h5>
                                     </div>
                                     <div class="ibox-content">
-                                    <?php if($flagDP): ?>
+                                    <?php if($flagDA): ?>
                                         <div class="alert alert-success mt-2" role="alert">
-                                            Publicación eliminada correctamente.!
+                                            Artículo eliminado correctamente.!
                                         </div>
                                     <?php endif; ?>
                                         <div class="table-responsive">
@@ -69,21 +66,21 @@
                                                     <tr>
                                                         <th scope="col" style="min-width: 100px;">Opciones</th>
                                                         <th scope="col">Título</th>
-                                                        <th scope="col">Tipo</th>
+                                                        <th scope="col">Descripción</th>
                                                         <th scope="col">Url</th>
-                                                        <th scope="col">Región</th>
+                                                        <th scope="col">Tipo</th>
                                                         <th scope="col">Fecha de creación</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <?php foreach($publications as $publication): ?>
+                                                    <?php foreach($articles as $article): ?>
                                                     <tr>
-                                                        <th class="text-center"><a href="<?= $_ENV['ROOT']; ?>/controllers/actions/publication/delete.php?id=<?= $publication['id']; ?>" onclick="deletep(event);" class="btn btn-danger mr-1"><i class="fas fa-trash-alt"></i></a><a href="<?= $_ENV['ROOT']; ?>/dashboard/edit-publication/<?= $publication['id']; ?>" class="btn btn-primary"><i class="fas fa-edit"></i></a></th>
-                                                        <th><?= $publication['title']; ?></th>
-                                                        <th><?= $publication['type']; ?></th>
-                                                        <th><?= $publication['link']; ?></th>
-                                                        <th><?= $publication['region']; ?></th>
-                                                        <th><?= $publication['create_date']; ?></th>
+                                                        <th class="text-center"><a href="<?= $_ENV['ROOT']; ?>/controllers/actions/article/delete.php?id=<?= $article['id']; ?>" onclick="deletea(event);" class="btn btn-danger mr-1"><i class="fas fa-trash-alt"></i></a><a href="<?= $_ENV['ROOT']; ?>/dashboard/edit-article/<?= $article['id']; ?>" class="btn btn-primary"><i class="fas fa-edit"></i></a></th>
+                                                        <th><?= $article['title']; ?></th>
+                                                        <th><?= $article['description_short']; ?></th>
+                                                        <th><?= $article['link']; ?></th>
+                                                        <th><?= $article['type']; ?></th>
+                                                        <th><?= $article['date_create']; ?></th>
                                                     </tr>
                                                     <?php endforeach; ?>
                                                 </tbody>
@@ -122,8 +119,8 @@
     <script src="<?= $_ENV['ROOT'] ?>/assets/js/plugins/pace/pace.min.js"></script>
 
     <script>
-        function deletep(event){
-            if(confirm("¿Esta seguro que desea eliminar este publicación?")){
+        function deletea(event){
+            if(confirm("¿Esta seguro que desea eliminar este artículo?")){
 
             }else{
                 event.preventDefault();

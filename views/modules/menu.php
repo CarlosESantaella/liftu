@@ -27,7 +27,7 @@
                 <a href="index.html"><i class="fa fa-book" aria-hidden="true"></i> <span class="nav-label">Artículos</span><span class="fa arrow"></span></a>
                 <ul class="nav nav-second-level collapse" aria-expanded="true" style="">
                     <li <?= ($submenu == 'createa')? "class='active'" : ''; ?>><a href="<?= ($submenu == 'createa')? '#' : $_ENV['ROOT'].'/dashboard/create-article'; ?>">Crear</a></li>
-                    <li><a href="#">Eliminar</a></li>
+                    <li <?= ($submenu == 'lista')? "class='active'" : ''; ?>><a href="<?= ($submenu == 'lista')? '#' : $_ENV['ROOT'].'/dashboard/list-articles'; ?>">Listar</a></li>
                 </ul>
             </li>
         </ul>
