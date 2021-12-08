@@ -8,24 +8,23 @@
         header('location: '.$_ENV['ROOT'].'/dashboard/login');
     }
     use App\Articles;
-
     $artM = new Articles;
-
     $menu = 'article';
-    $submenu = 'lista';
+    $submenu = 'edita';
 
-    $flagDA = false;
+    $flagEA = false;
 
-
-    if(isset($_COOKIE['deletea'])){
-        if($_COOKIE['deletea'] == 'si'){
-            $flagDA = true;
-            setcookie("deletea", "no", time() - 60, "/");
+    if(isset($_COOKIE['edita'])){
+        if($_COOKIE['edita'] == 'si'){
+            $flagEA = true;
+            setcookie('edita', 'no', time() - 60, "/");
         }
     }
 
-    $articles = $artM->get_articles();
-    
+    $id = $_GET['id'];
 
-    include($_SERVER['DOCUMENT_ROOT'].'/views/Dash_lista_view.php');
+    $article = $artM->get_article_id($id);
+
+
+    include($_SERVER['DOCUMENT_ROOT'].'/views/Dash_edita_view.php');
 ?>

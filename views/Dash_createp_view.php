@@ -39,7 +39,7 @@
                 </div>
                 <ul class="nav navbar-top-links navbar-right">
                     <li>
-                        <a href="#">
+                        <a href="<?= $_ENV['ROOT'] ?>/controllers/actions/users/logout.php">
                             <i class="fas fa-sign-out-alt"></i> Salir
                         </a>
                     </li>

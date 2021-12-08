@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>LiftU | crear artículo</title>
+    <title>LiftU | editar artículo</title>
 
     <link href="<?= $_ENV['ROOT'] ?>/assets/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
@@ -16,7 +16,9 @@
     <link href="<?= $_ENV['ROOT'] ?>/assets/css/style.css" rel="stylesheet">
     <link href="<?= $_ENV['ROOT'] ?>/assets/css/trumbowyg.css" rel="stylesheet">
     <link href="<?= $_ENV['ROOT'] ?>/assets/css/style-dashboard.css" rel="stylesheet">
+    <style>
 
+    </style>
 
 </head>
 
@@ -55,54 +57,69 @@
                             <div class="col-lg-12">
                                 <div class="ibox ">
                                     <div class="ibox-title">
-                                        <h5>Crear artículo</h5>
+                                        <h5>Editar artículo </h5>
                                     </div>
                                     <div class="ibox-content">
-                                        <?php if($flagCA): ?>
+                                        <?php if($flagEA): ?>
                                         <div class="alert alert-success mt-2" role="alert">
-                                            Artículo creado correctamente.!
+                                            Artículo editada correctamente.!
                                         </div>
                                         <?php endif; ?>
                                         <form class="row" method="post"
-                                            action="<?= $_ENV['ROOT'] ?>/controllers/actions/article/create.php" enctype="multipart/form-data">
+                                            action="<?= $_ENV['ROOT'] ?>/controllers/actions/article/edit.php" enctype="multipart/form-data">
                                             <!-- <h3 class="col-12 text-navy">Datos basicos del inmueble</h3> -->
-
+                                            <input type="hidden" name="id" value="<?= $article['id']; ?>">
                                             <div class="mb-3 col-sm-6 col-lg-4">
-                                                <label for="">Titulo de artículo</label>
-                                                <input type="text" class="form-control" name="title">
+                                                <label for="">Titulo del artículo</label>
+                                                <input type="text" class="form-control" name="title"
+                                                    value="<?= $article['title']; ?>">
                                             </div>
                                             <div class="mb-3 col-sm-6 col-lg-4">
                                                 <label for="">Tipo de artículo</label>
                                                 <select name="type" class="form-control" id="">
                                                     <option value="0">Seleccione una opción</option>
-                                                    <option value="1">Noticias</option>
-                                                    <option value="2">Talleres y Charlas</option>
-                                                    <option value="3">Cursos web</option>
-                                                    <option value="4">Herramientas</option>
-                                                    <option value="5">Tip laborales</option>
-                                                    <option value="6">Otras oportunidades</option>
+                                                    <option value="1"
+                                                        <?= ($article['type'] == 'Noticias')? 'selected' : ''; ?>>
+                                                        Noticias</option>
+                                                    <option value="2"
+                                                        <?= ($article['type'] == 'Talleres y Charlas')? 'selected' : ''; ?>>
+                                                        Talleres y Charlas</option>
+                                                    <option value="3"
+                                                        <?= ($article['type'] == 'Cursos web')? 'selected' : ''; ?>>
+                                                        Cursos web</option>
+                                                    <option value="4"
+                                                        <?= ($article['type'] == 'Herramientas')? 'selected' : ''; ?>>
+                                                        Herramientas</option>
+                                                    <option value="5"
+                                                        <?= ($article['type'] == 'Tip laborales')? 'selected' : ''; ?>>
+                                                        Tip laborales</option>
+                                                    <option value="6"
+                                                        <?= ($article['type'] == 'Otras oportunidades')? 'selected' : ''; ?>>
+                                                        Otras oportunidades</option>
                                                 </select>
                                             </div>
                                             <div class="mb-3 col-sm-6 col-lg-4">
                                                 <label for="">Descripción corta</label>
-                                                <textarea name="description-short" class="form-control"></textarea>
+                                                <textarea name="description-short"
+                                                    class="form-control"><?= $article['description_short']; ?></textarea>
                                             </div>
                                             <div class="mb-3 col-12">
                                                 <label for="">Descripción</label>
-                                                <div id="my-editor"></div>
+                                                <div id="my-editor"><?= $article['description']; ?></div>
                                             </div>
                                             <div class="mb-3 col-sm-6 col-lg-4">
                                                 <label for="">Link</label>
-                                                <input type="text" class="form-control" name="link">
+                                                <input type="text" class="form-control" name="link"
+                                                    value="<?= $article['link']; ?>">
                                             </div>
                                             <div class="mb-3 col-sm-6 col-lg-4">
                                                 <label for="">Imagen</label>
                                                 <div class="input-group mb-3">
                                                     <div class="custom-file">
-                                                        <input style="overflow:hidden;" type="file" accept="image/*" name="image" class="custom-file-input"
-                                                            id="inputGroupFile01"
+                                                        <input type="file" accept="image/*" name="image"
+                                                            class="custom-file-input" id="inputGroupFile01"
                                                             aria-describedby="inputGroupFileAddon01">
-                                                        <label class="custom-file-label" for="inputGroupFile01">Elige la imagen</label>
+                                                        <label class="custom-file-label" for="inputGroupFile01"><?= $article['image']; ?></label>
                                                     </div>
                                                 </div>
                                                 <figure class="container-img-file">
@@ -111,7 +128,8 @@
                                             </div>
                                             <div class="mb-3 col-sm-6 col-lg-4">
                                                 <label for="">Fecha de creación</label>
-                                                <input type="date" class="form-control" name="create-date">
+                                                <input type="date" class="form-control" name="create-date"
+                                                    value="<?= $article['date_create']; ?>">
                                             </div>
                                             <div class="col-12 text-center">
                                                 <button type="submit" class="btn btn-primary">Guardar</button>

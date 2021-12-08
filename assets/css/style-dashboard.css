@@ -1,0 +1,7 @@
+.container-img-file{
+    text-align: center;
+}
+.container-img-file img{
+    max-width: 100%;
+    max-height: 200px;
+}
