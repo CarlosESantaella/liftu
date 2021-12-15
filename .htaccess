@@ -2,6 +2,7 @@ RewriteEngine On
 RewriteCond %{HTTPS} off
 RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 Header always set Content-Security-Policy "upgrade-insecure-requests;"
+RewriteRule ^$ /controllers/Home_controller.php [L]
 RewriteRule ^dashboard/login$ /controllers/Dash_login_controller.php [L]
 RewriteRule ^dashboard/create-publication$ /controllers/Dash_createp_controller.php [L]
 RewriteRule ^dashboard/list-publications$ /controllers/Dash_listp_controller.php [L]

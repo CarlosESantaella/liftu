@@ -1,3 +1,4 @@
 .env
-/assets/file
-/assets/img
+/assets/file/*
+/assets/img/*
+/assets/recursos/*
