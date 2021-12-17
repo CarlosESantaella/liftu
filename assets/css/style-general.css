@@ -1,0 +1,45 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500&display=swap'); */
+:root{
+    --primary: #542ed1;
+    --primary-light: rgb(144, 106, 249);
+    --primary-lighter: rgb(204, 166, 255);
+    --secondary: #171141;
+    --third: #efeeff;
+    --fourth: #fe552c;
+    --fifth: #f9e1dc;
+    --black-light: rgb(80, 80, 80);
+    --white-background: #f2f3f4;
+    --font-main: 'Garet Book', sans-serif;
+    --font-heading: 'Garet', sans-serif;
+}
+@font-face {
+    font-family: 'Garet';
+    src: url('../fonts/Garet-Heavy.woff2') format('woff2'),
+        url('../fonts/Garet-Heavy.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Garet Book';
+    src: url('../fonts/Garet-Book.woff2') format('woff2'),
+        url('../fonts/Garet-Book.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+html{
+    font-family: var(--font);
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+body{
+    font-size: 1.6rem;
+}
+*,*:before,*:after{
+    box-sizing: inherit;
+}
+img{
+    width: 100%;
+}
