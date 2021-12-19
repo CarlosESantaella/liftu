@@ -5,6 +5,8 @@ Header always set Content-Security-Policy "upgrade-insecure-requests;"
 RewriteRule ^$ /controllers/Home_controller.php [L]
 RewriteRule ^dashboard/login$ /controllers/Dash_login_controller.php [L]
 RewriteRule ^publications$ /controllers/Publications_controller.php [L]
+RewriteRule ^blog$ /controllers/Blog_controller.php [L]
+RewriteRule ^blog/([0-9]+)$ /controllers/Article_controller.php?article=$1 [L]
 RewriteRule ^dashboard/create-publication$ /controllers/Dash_createp_controller.php [L]
 RewriteRule ^dashboard/list-publications$ /controllers/Dash_listp_controller.php [L]
 RewriteRule ^dashboard/edit-publication/([0-9]+)$ /controllers/Dash_editp_controller.php?id=$1 [L]

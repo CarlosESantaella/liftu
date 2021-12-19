@@ -40,7 +40,7 @@
                             <a class="nav-link" href="<?= $_ENV['ROOT'] ?>/publications">Empleos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Blog LiftU</a>
+                            <a class="nav-link" href="<?= $_ENV['ROOT'] ?>/blog">Blog LiftU</a>
                         </li>
                         <li class="nav-item li-btn">
                             <a class="btn btn-navbar-top text-white" href="#">Iniciar Sesión</a>

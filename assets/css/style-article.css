@@ -1,0 +1,124 @@
+/* globales */
+body{
+    background: white;
+}
+main{
+    margin-top: 10rem;
+}
+/* globales */
+/******************************/
+/************HEADER************/
+/******************************/
+.navbar-top {
+    background: var(--primary);
+    border-bottom: 1px solid var(--primary-light);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: all .3s ease 0s;
+}
+
+.navbar-top .navbar-brand img {
+    width: 10rem;
+    transition: all .3s ease 0s;
+}
+
+.navbar-top .navbar-nav li.li-btn {
+    margin-top: 1rem;
+}
+
+.navbar-top .navbar-nav li:not(.li-btn) a {
+    padding: 9px 0;
+}
+
+.navbar-top .navbar-nav li a {
+    color: silver;
+    font-family: var(--font);
+    font-weight: 500;
+    font-size: 1.7rem;
+    text-align: center;
+}
+
+.navbar-top .navbar-nav li a.active {
+    color: white;
+}
+
+.btn-navbar-top {
+    background: var(--primary-light);
+}
+
+.navbar-top .navbar-toggler:focus {
+    box-shadow: none;
+}
+
+li {
+    text-align: center;
+}
+
+.btn-navbar-top {
+    margin: 0 auto;
+}
+
+@media (min-width: 992px) {
+    .navbar-top .navbar-nav li.li-btn {
+        margin-top: 0;
+    }
+
+    .navbar-top .navbar-nav li {
+        margin-right: 1rem;
+    }
+
+    .navbar-top .navbar-nav li:last-child {
+        margin-right: 0;
+    }
+
+    .navbar-top .navbar-nav li:not(.li-btn) a {
+        padding: .5rem;
+    }
+}
+
+/******************************/
+/************HEADER************/
+/******************************/
+
+
+/******************************/
+/************ARTICLE************/
+/******************************/
+.title-article{
+    text-align: center;
+    font-family: var(--font-heading);
+    font-size: 2.4rem;
+    color: var(--fourth);
+    margin-bottom: 4rem;
+}
+.content-article p{
+    margin-bottom: 3rem;
+    font-size: 1.5rem;
+}
+.content-article figure{
+    text-align: center;
+    margin: 7rem 0;
+}
+.content-article figure img{
+    width: 100%;
+    max-width: 700px;
+}
+@media (min-width: 768px){
+    .title-article{
+        text-align: center;
+        font-family: var(--font-heading);
+        font-size: 3.8rem;
+        color: var(--fourth);
+        margin-bottom: 4rem;
+    }
+    .content-article p{
+        margin-bottom: 3rem;
+        font-size: 2rem;
+    }
+}
+/******************************/
+/************ARTICLE************/
+/******************************/

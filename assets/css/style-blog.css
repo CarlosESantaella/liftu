@@ -146,11 +146,12 @@ li {
     outline: none;
     border: 1px solid var(--primary-light);
 }
-.form-search > div button {
+.form-search > button {
     background: var(--third);
     color: var(--fourth);
-    padding: .91rem 1rem;
-    margin-left: -1px;
+    padding: .5rem 1rem;
+    display: block;
+    margin: 0 auto;
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
@@ -166,45 +167,30 @@ li {
 /******************************/
 /*********PUBLICATIONS*********/
 /******************************/
-
-.container-publication{
+a{
+    text-decoration: none;
+}
+.container-blog{
     min-height: 120px;
     background: white;
     width: 100%;
     border-top-right-radius: .5rem;
     border-top-left-radius: .5rem;
-    border-bottom: 3px solid var(--primary-light);
-    display: flex;
+    border-bottom: 3px solid var(--fourth);
     padding: 1rem;
-    justify-content: space-between;
     margin-bottom: 1.2rem;
 }
-.container-publication > div{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.container-blog > figure{
+    height: 250px;
+    background-image: url('../img/banner-1.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
-.container-publication > div h4{
-    color: var(--fourth);
-    font-family: var(--font-heading);
-    font-size: 1.8rem;
-}
-.container-publication > div p span{
-    margin-right: .5rem;
+.container-blog > div h3{
+    font-size: 1.4rem;
     font-family: var(--font-main);
-    font-size: 1.2rem;
-    color: gray;
-}
-.container-publication > div:last-child{
-    display: flex;
-    justify-content: center;
-}
-.container-publication > div:last-child button{
-    background: var(--fourth);
-    color: white;
-    padding: .3rem 1.5rem;
-    font-size: 1.5rem;
-    font-family: var(--font-main);
+    color: var(--black-light);
 }
 .pagination nav{
     margin: 0 auto;
@@ -227,6 +213,11 @@ li {
     font-family: var(--font-heading);
     font-size: 1.5rem;
     color: var(--fourth);
+}
+@media (min-width: 576px){
+    .container-blog > figure{
+        height: 180px;
+    }
 }
 @media (min-width: 768px){
     .container-publications{
