@@ -10,7 +10,7 @@
     $email = $_POST['email'];
     $pass = $_POST['pass'];
 
-    $user = $usersM->get_user_login($email, $pass);
+    $user = $usersM->get_user_login($email, $pass, 'admin');
 
     if($user){
         $_SESSION['email'] = $user['email'];

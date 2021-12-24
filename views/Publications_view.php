@@ -187,13 +187,20 @@
                 <section class="col-md-9">
                     <div class="container-publications">
 
+                        <?php foreach($publications as $publication): ?>
                         <div class="container-publication">
                             <div>
-                                <h4 title="titulo completo">esto es un titulo</h4>
+                                <h4 title="titulo completo"><?= $publication['title'] ?></h4>
                                 <p>
-                                    <span><i class="fas fa-map-marker-alt"></i> region</span>
-                                    <span><i class="fas fa-briefcase"></i> tipo de trabajo</span>
-                                    <span><i class="fas fa-calendar-week"></i> fecha de creación</span>
+                                    <?php if($publication['region'] != ''): ?>
+                                    <span><i class="fas fa-map-marker-alt"></i> <?= $publication['region'] ?></span>
+                                    <?php endif; ?>
+                                    <?php if($publication['type'] != ''): ?>
+                                    <span><i class="fas fa-briefcase"></i> <?= $publication['type'] ?></span>
+                                    <?php endif; ?>
+                                    <?php if($publication['create_date'] != ''): ?>
+                                    <span><i class="fas fa-calendar-week"></i> <?= $publication['create_date'] ?></span>
+                                    <?php endif; ?>
                                 </p>
                             </div>
                             <div class="">
@@ -201,40 +208,15 @@
                                     data-bs-target="#modalPublication">Ver</button>
                             </div>
                         </div>
-                        <div class="container-publication">
-                            <div>
-                                <h4 title="titulo completo">esto es un titulo</h4>
-                                <p>
-                                    <span><i class="fas fa-map-marker-alt"></i> region</span>
-                                    <span><i class="fas fa-briefcase"></i> tipo de trabajo</span>
-                                    <span><i class="fas fa-calendar-week"></i> fecha de creación</span>
-                                </p>
-                            </div>
-                            <div class="">
-                                <button class="btn" data-bs-toggle="modal"
-                                    data-bs-target="#modalPublication">Ver</button>
-                            </div>
-                        </div>
-                        <div class="container-publication">
-                            <div>
-                                <h4 title="titulo completo">esto es un titulo</h4>
-                                <p>
-                                    <span><i class="fas fa-map-marker-alt"></i> region</span>
-                                    <span><i class="fas fa-briefcase"></i> tipo de trabajo</span>
-                                    <span><i class="fas fa-calendar-week"></i> fecha de creación</span>
-                                </p>
-                            </div>
-                            <div class="">
-                                <button class="btn" data-bs-toggle="modal"
-                                    data-bs-target="#modalPublication">Ver</button>
-                            </div>
-                        </div>
+                        <?php endforeach; ?>
+
+                       
                     </div>
                     <div class="pagination">
                         <nav aria-label="...">
                             <ul class="pagination">
                                 <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&lt;</a>
                                 </li>
                                 <li class="page-item"><a class="page-link" href="#">1</a></li>
                                 <li class="page-item active" aria-current="page">
@@ -242,7 +224,7 @@
                                 </li>
                                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                                 <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
+                                    <a class="page-link" href="#">&gt;</a>
                                 </li>
                             </ul>
                         </nav>

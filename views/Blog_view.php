@@ -180,85 +180,22 @@
                 <section class="col-md-9">
                     <div class="container-publications ">
                         <div class="row">
+
+                            <?php foreach($articles as $article): ?>
                             <div class="col-sm-6 col-lg-4">
                                 <a href="#">
 
                                     <div class="container-blog">
-                                        <figure>
+                                        <figure style="background-image: url('<?= $_ENV['ROOT'] ?>/assets/file/<?= $article['image'] ?>')">
                                             
                                         </figure>
                                         <div class="">
-                                            <h3>esto es el título del artículo</h3>
+                                            <h3><?= $article['title'] ?></h3>
                                         </div>
                                     </div>
                                 </a>
                             </div>
-                            <div class="col-sm-6 col-lg-4">
-                                <a href="#">
-
-                                    <div class="container-blog">
-                                        <figure>
-                                            
-                                        </figure>
-                                        <div class="">
-                                            <h3>esto es el título del artículo</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-4">
-                                <a href="#">
-
-                                    <div class="container-blog">
-                                        <figure>
-                                            
-                                        </figure>
-                                        <div class="">
-                                            <h3>esto es el título del artículo</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-4">
-                                <a href="#">
-
-                                    <div class="container-blog">
-                                        <figure>
-                                            
-                                        </figure>
-                                        <div class="">
-                                            <h3>esto es el título del artículo</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-4">
-                                <a href="#">
-
-                                    <div class="container-blog">
-                                        <figure>
-                                            
-                                        </figure>
-                                        <div class="">
-                                            <h3>esto es el título del artículo</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col-sm-6 col-lg-4">
-                                <a href="#">
-
-                                    <div class="container-blog">
-                                        <figure>
-                                            
-                                        </figure>
-                                        <div class="">
-                                            <h3>esto es el título del artículo</h3>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        
+                            <?php endforeach; ?>
                             
                         </div>
                     </div>
@@ -266,7 +203,7 @@
                         <nav aria-label="...">
                             <ul class="pagination">
                                 <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&lt;</a>
                                 </li>
                                 <li class="page-item"><a class="page-link" href="#">1</a></li>
                                 <li class="page-item active" aria-current="page">
@@ -274,7 +211,7 @@
                                 </li>
                                 <li class="page-item"><a class="page-link" href="#">3</a></li>
                                 <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
+                                    <a class="page-link" href="#">&gt;</a>
                                 </li>
                             </ul>
                         </nav>
