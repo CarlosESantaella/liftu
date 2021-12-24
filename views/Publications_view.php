@@ -23,12 +23,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, dolores perferendis, labore dolor quaerat totam voluptates, ea voluptatibus fugiat in cumque nostrum quibusdam accusamus aspernatur veniam consequatur. Sapiente architecto in libero excepturi ab repudiandae assumenda nobis magni ipsam. Ipsam, blanditiis neque animi temporibus accusantium sapiente hic nihil vero sequi impedit?
                 </div>
-                <!-- <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div> -->
+                <div class="modal-footer">
+                    <!-- <button type="button" class="btn btn-refresh" data-bs-dismiss="modal">Close</button> -->
+                    <button type="button" class="btn btn-refresh">Ver</button>
+                </div>
             </div>
         </div>
     </div>
@@ -55,7 +55,7 @@
                             <a class="nav-link" href="<?= $_ENV['ROOT'] ?>/blog">Blog LiftU</a>
                         </li>
                         <li class="nav-item li-btn">
-                            <a class="btn btn-navbar-top text-white" href="#">Iniciar Sesión</a>
+                            <a class="btn btn-navbar-top text-white" href="<?= $_ENV['ROOT'] ?>/login-register">Iniciar Sesión</a>
                         </li>
                         <li class="nav-item li-btn">
                             <a class="btn btn-navbar-top text-white" href="#">Acceso Empresas</a>
@@ -71,13 +71,32 @@
                 <aside class="col-md-3">
                     <section class="container-filter">
                         <div>
+                            <form action="hola.php" class="form-search input-group input-search-banner" method="post">
+                                <input type="hidden" class="type-offer" name="type-offer" value="">
+                                <input type="hidden" class="region-offer" name="region-offer" value="">
+                                <input type="hidden" class="date-offer" name="date-offer" value="">
+                                <input type="hidden" class="orderby-offer" name="orderby-offer" value="">
+                                <div>
+
+                                    <input type="text" class="form-control" placeholder="Buscar trabajo..."
+                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                    <button type="submit" class="input-group-text" id="basic-addon2"><i
+                                            class="fas fa-search fa-lg"></i></button>
+                                </div>
+                            </form>
+                        </div>
+                        <hr>
+                        <div>
                             <label for="select-type">Tipo de oferta</label>
                             <select name="type" class="form-select" id="select-type">
                                 <option value="">Seleccione una opción</option>
                                 <option value="Prácticas">Prácticas</option>
-                                <option value="1eros empleos profesionales">1eros empleos profesionales</option>
+                                <option value="1eros empleos profesionales">Primeros empleos profesionales</option>
                                 <option value="Otros / Pitutos / Part time">Otros / Pitutos / Part time</option>
                             </select>
+                            <div class="text-end">
+                                <button class="btn btn-refresh">Actualizar</button>
+                            </div>
                         </div>
                         <hr>
                         <div>
@@ -104,6 +123,9 @@
                                 <option value="XII - Magallanes y de la Antártica Chilena">XII - Magallanes y de la
                                     Antártica Chilena</option>
                             </select>
+                            <div class="text-end">
+                                <button class="btn btn-refresh">Actualizar</button>
+                            </div>
                         </div>
                         <hr>
                         <div>
@@ -143,6 +165,9 @@
                                     Todos
                                 </label>
                             </div>
+                            <div class="text-end">
+                                <button class="btn btn-refresh">Actualizar</button>
+                            </div>
                         </div>
                         <hr>
                         <div>
@@ -152,23 +177,11 @@
                                 <option value="Más nuevo">Más nuevo</option>
                                 <option value="Más antiguo">Más antiguo</option>
                             </select>
+                            <div class="text-end">
+                                <button class="btn btn-refresh">Actualizar</button>
+                            </div>
                         </div>
-                        <hr>
-                        <div>
-                            <form action="hola.php" class="form-search input-group input-search-banner" method="post">
-                                <input type="hidden" class="type-offer" name="type-offer" value="">
-                                <input type="hidden" class="region-offer" name="region-offer" value="">
-                                <input type="hidden" class="date-offer" name="date-offer" value="">
-                                <input type="hidden" class="orderby-offer" name="orderby-offer" value="">
-                                <div>
 
-                                    <input type="text" class="form-control" placeholder="Buscar trabajo..."
-                                        aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                    <button type="submit" class="input-group-text" id="basic-addon2"><i
-                                            class="fas fa-search fa-lg"></i></button>
-                                </div>
-                            </form>
-                        </div>
                     </section>
                 </aside>
                 <section class="col-md-9">

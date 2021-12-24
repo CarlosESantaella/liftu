@@ -6,11 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LiftU - Inicio</title>
-    <link rel="stylesheet" href="<?= $_ENV['ROOT'] ?>/assets/css/bootstrap5.css">
+    <link rel="preload" as="style" onload="this.rel = 'stylesheet'" href="<?= $_ENV['ROOT'] ?>/assets/css/bootstrap5.css">
     <link rel="preload" href="<?= $_ENV['ROOT'] ?>/assets/fonts/Garet-Book.woff2" as="font" type="font/woff2"
         crossorigin>
-    <link rel="stylesheet" href="<?= $_ENV['ROOT'] ?>/assets/css/style-general.css">
-    <link rel="stylesheet" href="<?= $_ENV['ROOT'] ?>/assets/css/style-home.css">
+    <link rel="preload"  href="<?= $_ENV['ROOT'] ?>/assets/css/style-general.css" as="style" onload="this.rel = 'stylesheet'">
+    <link rel="preload"  href="<?= $_ENV['ROOT'] ?>/assets/css/style-home.css" as="style" onload="this.rel = 'stylesheet'">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
@@ -43,7 +43,7 @@
                             <a class="nav-link" href="<?= $_ENV['ROOT'] ?>/blog">Blog LiftU</a>
                         </li>
                         <li class="nav-item li-btn">
-                            <a class="btn btn-navbar-top text-white" href="#">Iniciar Sesión</a>
+                            <a class="btn btn-navbar-top text-white" href="<?= $_ENV['ROOT'] ?>/login-register">Iniciar Sesión</a>
                         </li>
                         <li class="nav-item li-btn">
                             <a class="btn btn-navbar-top text-white" href="#">Acceso Empresas</a>
@@ -87,6 +87,10 @@
                             <figure>
                             </figure>
                         </div>
+                        <div class="d-block d-sm-none mb-5">
+                            <a href="#" class="btn btn-s1">Últimas ofertas de empleo</a>
+                            <a href="#" class="btn btn-s1">Últimos recursos para tu futuro laboral</a>
+                        </div>
                         <div class="col-sm-6 col-md-4">
                             <figure>
                             </figure>
@@ -109,7 +113,7 @@
                         distinciones, sin discriminaciones de ningún tipo.</p>
                     <p>Queremos acompañarte en tu proceso de inserción laboral, brindándote las herramientas necesarias
                         para que encuentres la empresa de tus sueños.</p>
-                    <div>
+                    <div class="d-none d-sm-block">
                         <a href="#" class="btn btn-s1">Últimas ofertas de empleo</a>
                         <a href="#" class="btn btn-s1">Últimos recursos para tu futuro laboral</a>
                     </div>
@@ -210,6 +214,9 @@
                 </div>
                 <div  class="col-12 container-img-ftr">
                     <figure>
+                        <img class="bg-white border rounded-3" src="<?= $_ENV['ROOT'] ?>/assets/img/corfo.webp" alt="">
+                    </figure>
+                    <figure>
                         <img src="<?= $_ENV['ROOT'] ?>/assets/img/uddv.webp" alt="">
                     </figure>
                 </div>
@@ -219,8 +226,8 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <script src="<?= $_ENV['ROOT'] ?>/assets/js/bootstrap.bundle.js"></script>
-    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script async src="<?= $_ENV['ROOT'] ?>/assets/js/bootstrap.bundle.js"></script>
+    <script defer type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.customer-logos').slick({

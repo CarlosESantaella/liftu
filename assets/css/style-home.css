@@ -184,14 +184,14 @@ li {
     background-position: center;
 }
 
-.container-images-s1 .row>div:nth-child(4) figure {
+.container-images-s1 .row>div:nth-child(5) figure {
     background: url('../img/banner-4.webp');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-.container-images-s1 .row>div:nth-child(5) figure {
+.container-images-s1 .row>div:nth-child(6) figure {
     background: url('../img/logo-banner.webp');
     background-repeat: no-repeat;
     background-size: cover;
@@ -199,7 +199,7 @@ li {
     background-color: white;
 }
 
-.container-images-s1 .row>div:nth-child(6) figure {
+.container-images-s1 .row>div:nth-child(7) figure {
     background: url('../img/banner-5.webp');
     background-repeat: no-repeat;
     background-size: cover;
@@ -520,6 +520,10 @@ body {
 footer{
     background: var(--secondary);
     padding: 9rem 0 1rem 0;
+}
+.container-img-ftr{
+    display: flex;
+    justify-content: flex-end;
 }
 .container-img-ftr figure{
     text-align: right;

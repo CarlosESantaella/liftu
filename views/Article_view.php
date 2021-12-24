@@ -38,7 +38,7 @@
                             <a class="nav-link active" href="#">Blog LiftU</a>
                         </li>
                         <li class="nav-item li-btn">
-                            <a class="btn btn-navbar-top text-white" href="#">Iniciar Sesión</a>
+                            <a class="btn btn-navbar-top text-white" href="<?= $_ENV['ROOT'] ?>/login-register">Iniciar Sesión</a>
                         </li>
                         <li class="nav-item li-btn">
                             <a class="btn btn-navbar-top text-white" href="#">Acceso Empresas</a>
