@@ -35,7 +35,20 @@
                 $publications = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 return $publications;
             }catch(PDOException $e){
-                die('error: '.$e->getMessage);
+                die('error: '.$e->getMessage());
+            }
+        }
+
+        public function get_publications_query($query, $start, $limit){
+            try{
+                $stmt = $this->conn->prepare("SELECT * FROM publications ".$query." LIMIT :start, :limit");
+                $stmt->bindParam(":start", $start, PDO::PARAM_INT);
+                $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
+                $stmt->execute();
+                $publications = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $publications;
+            }catch(PDOException $e){
+                die('error: '.$e->getMessage());
             }
         }
         public function get_publication_id($id){
@@ -46,7 +59,18 @@
                 $publication = $stmt->fetch(PDO::FETCH_ASSOC);
                 return $publication;
             }catch(PDOException $e){
-                die('error: '.$e->getMessage);
+                die('error: '.$e->getMessage());
+            }
+        }
+
+        public function count_publications_query($query){
+            try{
+                $stmt = $this->conn->prepare("SELECT COUNT(*) as total_p FROM publications ".$query);
+                $stmt->execute();
+                $nRows = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $nRows['total_p'];
+            }catch(PDOException $e){
+                die('error: '.$e->getMessage());
             }
         }
 

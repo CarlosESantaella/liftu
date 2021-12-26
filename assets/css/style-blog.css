@@ -104,6 +104,9 @@ li {
 /******************************/
 /********SIDEBAR FILTER********/
 /******************************/
+.container-filter .form-check{
+    font-size: 1.6rem;
+}
 .container-filter{
     background: white;
     padding: 1.2rem;

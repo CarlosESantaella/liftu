@@ -38,6 +38,19 @@
             }
         }
 
+        public function get_articles_query($query, $start, $limit){
+            try{
+                $stmt = $this->conn->prepare("SELECT * FROM articles ".$query." LIMIT :start, :limit");
+                $stmt->bindParam(":start", $start, PDO::PARAM_INT);
+                $stmt->bindParam(":limit", $limit, PDO::PARAM_INT);
+                $stmt->execute();
+                $articles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                return $articles;
+            }catch(PDOException $e){
+                die('error: '.$e->getMessage());
+            }
+        }
+
         public function get_article_id($id){
             try{
                 $stmt = $this->conn->prepare('SELECT * FROM articles WHERE id = :id');
@@ -49,6 +62,18 @@
                 die('error: '.$e->getMessage().' on '.$e->getLine());
             }
         }
+
+        public function count_articles_query($query){
+            try{
+                $stmt = $this->conn->prepare("SELECT COUNT(*) as total_p FROM articles ".$query);
+                $stmt->execute();
+                $nRows = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $nRows['total_p'];
+            }catch(PDOException $e){
+                die('error: '.$e->getMessage());
+            }
+        }
+
         public function update_article_id($title, $type, $description_short, $description, $image, $link, $date, $id){
             try{
                 $stmt = $this->conn->prepare('UPDATE articles SET title=:title, description_short=:description_short, description=:description, image=:image, link=:link, type=:type, date_create=:date WHERE id = :id');

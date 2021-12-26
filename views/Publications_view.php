@@ -13,7 +13,9 @@
         integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
 </head>
 
-<body style="margin-bottom: 2000px;">
+<body >
+    <input type="hidden" class="n_rows" value="<?= $num_total_rows ?>">
+    <input type="hidden" class="root_domain" value="<?= $_ENV['ROOT'] ?>">
     <!-- Modal -->
     <div class="modal fade" id="modalPublication" tabindex="-1" aria-labelledby="modalPublicationLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -72,15 +74,12 @@
                     <section class="container-filter">
                         <div>
                             <form action="hola.php" class="form-search input-group input-search-banner" method="post">
-                                <input type="hidden" class="type-offer" name="type-offer" value="">
-                                <input type="hidden" class="region-offer" name="region-offer" value="">
-                                <input type="hidden" class="date-offer" name="date-offer" value="">
-                                <input type="hidden" class="orderby-offer" name="orderby-offer" value="">
+                                
                                 <div>
 
-                                    <input type="text" class="form-control" placeholder="Buscar trabajo..."
+                                    <input type="text" class="form-control" id="input-search" placeholder="Buscar trabajo..."
                                         aria-label="Recipient's username" aria-describedby="basic-addon2">
-                                    <button type="submit" class="input-group-text" id="basic-addon2"><i
+                                    <button type="button" class="input-group-text btn-submit" id="basic-addon2"><i
                                             class="fas fa-search fa-lg"></i></button>
                                 </div>
                             </form>
@@ -91,11 +90,11 @@
                             <select name="type" class="form-select" id="select-type">
                                 <option value="">Seleccione una opción</option>
                                 <option value="Prácticas">Prácticas</option>
-                                <option value="1eros empleos profesionales">Primeros empleos profesionales</option>
+                                <option value="Primeros empleos profesionales">Primeros empleos profesionales</option>
                                 <option value="Otros / Pitutos / Part time">Otros / Pitutos / Part time</option>
                             </select>
                             <div class="text-end">
-                                <button class="btn btn-refresh">Actualizar</button>
+                                <button class="btn btn-refresh btn-submit">Actualizar</button>
                             </div>
                         </div>
                         <hr>
@@ -124,61 +123,61 @@
                                     Antártica Chilena</option>
                             </select>
                             <div class="text-end">
-                                <button class="btn btn-refresh">Actualizar</button>
+                                <button class="btn btn-refresh btn-submit">Actualizar</button>
                             </div>
                         </div>
                         <hr>
                         <div>
                             <label for="">Por fecha</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="last-45" value="true"
-                                    id="last-48">
+                            <!-- <div class="form-check">
+                                <input class="form-check-input" type="checkbox" name="last-45"
+                                    id="last-h">
                                 <label class="form-check-label" for="last-48">
                                     Última hora
                                 </label>
-                            </div>
+                            </div> -->
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="last-4-days" value="true"
-                                    id="last-4-days">
+                                <input class="form-check-input" type="checkbox" name="last-4-days" 
+                                    id="last-24-hours">
                                 <label class="form-check-label" for="last-4-days">
                                     Últimas 24 horas
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="last-7-days" value="true"
-                                    id="last-7-days">
+                                <input class="form-check-input" type="checkbox" name="last-7-days" 
+                                    id="last-4-days">
                                 <label class="form-check-label" for="last-7-days">
                                     Últimos 4 dias
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="last-7-days" value="true"
+                                <input class="form-check-input" type="checkbox" name="last-7-days" 
                                     id="last-7-days">
                                 <label class="form-check-label" for="last-7-days">
                                     Últimos 7 dias
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="all-options-date" value="true"
+                                <input class="form-check-input" type="checkbox" name="all-options-date"
                                     id="all-options-date">
                                 <label class="form-check-label" for="all-options-date">
                                     Todos
                                 </label>
                             </div>
                             <div class="text-end">
-                                <button class="btn btn-refresh">Actualizar</button>
+                                <button class="btn btn-refresh btn-submit">Actualizar</button>
                             </div>
                         </div>
                         <hr>
                         <div>
                             <label for="">Ordenar por</label>
-                            <select name="orderby" class="form-select" id="">
+                            <select name="orderby" class="form-select" id="select-order-by">
                                 <option value="">Seleccione una opción</option>
-                                <option value="Más nuevo">Más nuevo</option>
-                                <option value="Más antiguo">Más antiguo</option>
+                                <option value="1">Más nuevo</option>
+                                <option value="2">Más antiguo</option>
                             </select>
                             <div class="text-end">
-                                <button class="btn btn-refresh">Actualizar</button>
+                                <button class="btn btn-refresh btn-submit">Actualizar</button>
                             </div>
                         </div>
 
@@ -187,7 +186,7 @@
                 <section class="col-md-9">
                     <div class="container-publications">
 
-                        <?php foreach($publications as $publication): ?>
+                        <?php foreach($results as $publication): ?>
                         <div class="container-publication">
                             <div>
                                 <h4 title="titulo completo"><?= $publication['title'] ?></h4>
@@ -212,22 +211,45 @@
 
                        
                     </div>
-                    <div class="pagination">
+                    <div class="pagination" data-page="1">
                         <nav aria-label="...">
-                            <ul class="pagination">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">&lt;</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item active" aria-current="page">
-                                    <a class="page-link" href="#">2</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">&gt;</a>
-                                </li>
+                            <ul class="pagination" id="pagination">
+                            <?php 
+                        
+                                if ($total_pages > 1) {
+                                    
+                                    $disabled = (($page - 1) == 0)? 'disabled' : '';
+                                    echo"<li class='page-item {$disabled}'>
+                                            <a class='page-link' data-page='".($page-1)."' href='#' tabindex='-1' aria-disabled='true'>&laquo;</a>
+                                        </li>";
+                                    
+                                    $count = 1;
+                                    $page_init = (($page - 2) <= 0)? 1 : ($page - 2);
+
+                                    for ($i=$page_init;$i<=$total_pages;$i++) {
+
+                                        if($count == 6) break;
+
+                                        if ($page == $i) {
+                                            echo '<li class="page-item active"><a class="page-link" href="#">'.$page.'</a></li>';
+                                        } else {
+                                            echo '<li class="page-item"><a class="page-link" href="#" data-page="'.$i.'">'.$i.'</a></li>';
+                                        }
+
+                                        $count++;
+                                    }
+                            
+                                    if ($page != $total_pages) {
+                                        echo '<li class="page-item">
+                                                <a class="page-link" href="#" data-page="'.($page+1).'">&raquo;</a>
+                                            </li>';
+                                    }
+                                }
+                            ?>
                             </ul>
                         </nav>
+                        
+
                     </div>
                 </section>
             </div>
@@ -249,6 +271,140 @@
                 });
 
             }
+        })
+        $(document).ready(() => {
+            var root_domain = $('.root_domain').val();
+            var query = '';
+
+            $('.btn-submit').on('click', function(){
+                query = '';
+                let input_search = $('#input-search').val();
+                let select_type = $('#select-type').val();
+                let select_region = $('#select-region').val();
+                // let box_last_hour = $('#last-h').prop('checked');
+                let box_last_24_hour = $('#last-24-hours').prop('checked');
+                let box_last_4_days = $('#last-4-days').prop('checked');
+                let box_last_7_days = $('#last-7-days').prop('checked');
+                let box_all = $('#all-options-date').prop('checked');
+                let select_order_by = $('#select-order-by').val();
+                let counter_all = 0;
+                let counter_date = 0;
+
+                if(input_search != ''){
+                    if(counter_all == 0){
+                        counter_all++;
+                        query += "WHERE title LIKE '%"+input_search+"%' ";
+                    }
+                }
+
+                if(select_type != ''){
+                    if(counter_all == 0){
+                        query += "WHERE type = '"+select_type+"' ";
+                    }else{
+                        query += "AND type = '"+select_type+"' ";
+                    }
+                    counter_all++;
+                }
+
+                if(select_region != ''){
+                    if(counter_all == 0){
+                        query += "WHERE region = '"+select_region+"' ";
+                    }else{
+                        query += "AND region = '"+select_region+"' ";
+                    }
+                    counter_all++;
+                }
+
+                if(box_all != ''){
+
+
+                }else{
+                    if(box_last_7_days != ''){
+                        if(counter_all == 0){
+                            query += "WHERE create_date BETWEEN DATE_SUB(CURDATE(),INTERVAL 7 DAY)  AND CURDATE() ";
+    
+                        }else{
+                            query += "AND create_date BETWEEN DATE_SUB(CURDATE(),INTERVAL 7 DAY)  AND CURDATE() ";
+    
+                        }
+                        counter_all++;
+                    }else{
+    
+                        if(box_last_4_days != ''){
+                            if(counter_all == 0){
+                                query += "WHERE create_date BETWEEN DATE_SUB(CURDATE(),INTERVAL 4 DAY)  AND CURDATE() ";
+    
+                            }else{
+                                query += "AND create_date BETWEEN DATE_SUB(CURDATE(),INTERVAL 4 DAY)  AND CURDATE() ";
+                            }
+                            counter_all++;
+                        }else{
+    
+                            if(box_last_24_hour != ''){
+                                if(counter_all == 0){
+                                    query += "WHERE create_date BETWEEN DATE_SUB(CURDATE(),INTERVAL 1 DAY)  AND CURDATE() ";
+        
+                                }else{
+                                    query += "AND create_date BETWEEN DATE_SUB(CURDATE(),INTERVAL 1 DAY)  AND CURDATE() ";
+                                }
+                                counter_all++;
+                            }
+                        }
+                    }
+                }
+
+                if(select_order_by != ''){
+                    if(select_order_by == '2'){
+                        query += "ORDER BY create_date ASC";
+                    }else{
+                        query += "ORDER BY create_date DESC";
+                    }
+                }else{
+                    query += "ORDER BY create_date DESC";
+                }
+
+                let formData = new FormData();
+                formData.append('query', query);
+
+                fetch(root_domain+'/controllers/actions/publication/pagination.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    let result = data;
+
+                    $('.container-publications').html('');
+                    $('.container-publications').html(result.content);
+                    $('#pagination').html('');
+                    $('#pagination').html(result.pagination);
+                });
+                
+            })
+
+            $('#pagination').on('click', '.page-link', function(e){
+                e.preventDefault();
+                let page = parseInt($(this).attr('data-page'), 10);
+                
+                let formData = new FormData();
+                formData.append('page', page);
+                formData.append('query', query);
+
+                fetch(root_domain+'/controllers/actions/publication/pagination.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    let result = data;
+
+                    $('.container-publications').html('');
+                    $('.container-publications').html(result.content);
+                    $('#pagination').html('');
+                    $('#pagination').html(result.pagination);
+                });
+                // console.log(content);
+            });
         })
     </script>
 </body>
