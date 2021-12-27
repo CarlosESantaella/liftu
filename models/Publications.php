@@ -63,6 +63,17 @@
             }
         }
 
+        public function get_configuration(){
+            try{
+                $stmt = $this->conn->prepare("SELECT * from configuration WHERE id = 1");
+                $stmt->execute();
+                $configuration = $stmt->fetch(PDO::FETCH_ASSOC);
+                return $configuration;
+            }catch(PDOException $e){
+                die('error: '.$e->getMessage());
+            }
+        }
+
         public function count_publications_query($query){
             try{
                 $stmt = $this->conn->prepare("SELECT COUNT(*) as total_p FROM publications ".$query);
@@ -95,6 +106,24 @@
             try{
                 $stmt = $this->conn->prepare("DELETE FROM publications WHERE id = :id");
                 $stmt->bindParam(":id", $id);
+                $stmt->execute();
+            }catch(PDOException $e){
+                die('error: '.$e->getMessage);
+            }
+        }
+
+        public function configuration_activate(){
+            try{
+                $stmt = $this->conn->prepare("UPDATE configuration SET limit_publi = 1 WHERE id = 1");
+                $stmt->execute();
+            }catch(PDOException $e){
+                die('error: '.$e->getMessage);
+            }
+        }
+
+        public function configuration_desactivate(){
+            try{
+                $stmt = $this->conn->prepare("UPDATE configuration SET limit_publi = 0 WHERE id = 1");
                 $stmt->execute();
             }catch(PDOException $e){
                 die('error: '.$e->getMessage);

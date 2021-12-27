@@ -21,15 +21,15 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalPublicationLabel">Titulo de publicación</h5>
+                    <h5 class="modal-title" id="modalPublicationLabel"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum, dolores perferendis, labore dolor quaerat totam voluptates, ea voluptatibus fugiat in cumque nostrum quibusdam accusamus aspernatur veniam consequatur. Sapiente architecto in libero excepturi ab repudiandae assumenda nobis magni ipsam. Ipsam, blanditiis neque animi temporibus accusantium sapiente hic nihil vero sequi impedit?
+                    
                 </div>
                 <div class="modal-footer">
                     <!-- <button type="button" class="btn btn-refresh" data-bs-dismiss="modal">Close</button> -->
-                    <button type="button" class="btn btn-refresh">Ver</button>
+                    <a class="link-publication" target="_blank" href="#"><button type="button" class="btn btn-refresh">Ir a enlace</button></a>
                 </div>
             </div>
         </div>
@@ -62,6 +62,14 @@
                         <li class="nav-item li-btn">
                             <a class="btn btn-navbar-top text-white" href="#">Acceso Empresas</a>
                         </li>
+                        <?php if(isset($user['name'])): ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#"><?= $user['name']?></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="<?= $_ENV['ROOT'] ?>/controllers/actions/login-register/logout.php"><i class="fas fa-sign-out-alt"></i></a>
+                        </li>
+                        <?php endif; ?>
                 </div>
             </div>
         </nav>
@@ -203,7 +211,7 @@
                                 </p>
                             </div>
                             <div class="">
-                                <button class="btn" data-bs-toggle="modal"
+                                <button class="btn btn-ver" data-id="<?= $publication['id'] ?>" data-bs-toggle="modal"
                                     data-bs-target="#modalPublication">Ver</button>
                             </div>
                         </div>
@@ -405,6 +413,26 @@
                 });
                 // console.log(content);
             });
+
+            $('.container-publications').on('click', '.btn-ver', function(){
+
+                let id = $(this).attr('data-id');
+
+                let formData = new FormData();
+                formData.append('id', id);
+                
+                fetch(root_domain+'/controllers/actions/publication/see-link.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    $('.modal-title').text(data.title);
+                    $('.modal-body').html(data.description);
+                    $('.link-publication').attr('href', data.link)
+                });
+
+            })
         })
     </script>
 </body>

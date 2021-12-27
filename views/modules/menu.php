@@ -32,6 +32,9 @@
 
                 </ul>
             </li>
+            <li <?= ($menu == 'configuration')? "class='active'" : ''; ?>>
+                <a href="<?= ($menu == 'configuration')? '#' : $_ENV['ROOT'].'/dashboard/configuration'; ?>"><i class="fas fa-cogs"></i> <span class="nav-label">Configuración</span></a>
+            </li>
         </ul>
 
     </div>

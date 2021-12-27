@@ -66,7 +66,7 @@ if ($num_total_rows > 0) {
             $publicationsHTML .= '</p>';
             $publicationsHTML .= '</div>';
             $publicationsHTML .= '<div class="">';
-            $publicationsHTML .= '<button class="btn" data-bs-toggle="modal" data-bs-target="#modalPublication">Ver</button>';
+            $publicationsHTML .= '<button class="btn" data-bs-toggle="modal" data-id="'.$publication['id'].'" data-bs-target="#modalPublication">Ver</button>';
             $publicationsHTML .= '</div>';
             $publicationsHTML .= '</div>';
         endforeach;

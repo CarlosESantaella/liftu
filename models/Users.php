@@ -25,6 +25,18 @@ class Users{
         }
     }
 
+    public function get_user_by_id($id){
+        try{
+            $stmt = $this->conn->prepare("SELECT * FROM users WHERE id = :id");
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $user;
+        }catch(PDOException $e){
+            die('error: '.$e->getMessage().' on '.$e->getLine());
+        }
+    }
+
     public function get_email($email){
         try{
             $stmt = $this->conn->prepare("SELECT * FROM users WHERE email = :email");

@@ -48,6 +48,14 @@
                         <li class="nav-item li-btn">
                             <a class="btn btn-navbar-top text-white" href="#">Acceso Empresas</a>
                         </li>
+                        <?php if(isset($user['name'])): ?>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="#"><?= $user['name']?></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="<?= $_ENV['ROOT'] ?>/controllers/actions/login-register/logout.php"><i class="fas fa-sign-out-alt"></i></a>
+                        </li>
+                        <?php endif; ?>
                 </div>
             </div>
         </nav>

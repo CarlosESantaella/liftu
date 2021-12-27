@@ -1,8 +1,11 @@
 <?php 
+    session_start();
     require($_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php');
     $dotenv = Dotenv\Dotenv::createimmutable($_SERVER['DOCUMENT_ROOT']);
     $dotenv->load();
     use App\Publications;
+    use App\Users;
+    $usersM = new Users;
     $publicationsM = new Publications;
 
     $publications = $publicationsM->get_publications();
@@ -33,6 +36,10 @@
         // echo '<h3>Mostrando la pagina '.$page.' de ' .$total_pages.' paginas.</h3>';
         $query = '';
         $results = $publicationsM->get_publications_query($query, $start, NUM_ITEMS_BY_PAGE);
+        if(isset($_SESSION['id'])){
+
+            $user = $usersM->get_user_by_id($_SESSION['id']);
+        }
    
             // echo '<ul class="row items">';
             // foreach ($results as $row) {

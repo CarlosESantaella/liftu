@@ -1,4 +1,5 @@
 <?php 
+    session_start();
     require($_SERVER['DOCUMENT_ROOT'].'/vendor/autoload.php');
 
     $dotenv = Dotenv\Dotenv::createimmutable($_SERVER['DOCUMENT_ROOT']);
@@ -6,6 +7,13 @@
     
     use App\Articles;
     $articlesM = new Articles;
+
+    use App\Users;
+    $usersM = new Users;
+    if(isset($_SESSION['id'])){
+
+        $user = $usersM->get_user_by_id($_SESSION['id']);
+    }
 
     $articles = $articlesM->get_articles();
 
