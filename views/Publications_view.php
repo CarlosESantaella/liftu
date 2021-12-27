@@ -16,6 +16,7 @@
 <body >
     <input type="hidden" class="n_rows" value="<?= $num_total_rows ?>">
     <input type="hidden" class="root_domain" value="<?= $_ENV['ROOT'] ?>">
+    <input type="hidden" class="flag_publi" value="<?= $flag_publi ?>">
     <!-- Modal -->
     <div class="modal fade" id="modalPublication" tabindex="-1" aria-labelledby="modalPublicationLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -34,7 +35,7 @@
             </div>
         </div>
     </div>
-    <header>
+    <header class="">
         <nav class="navbar navbar-expand-lg navbar-home navbar-top navbar-dark">
             <div class="container-fluid">
                 <a class="navbar-brand" href="#">
@@ -282,6 +283,7 @@
         })
         $(document).ready(() => {
             var root_domain = $('.root_domain').val();
+            var flag_publi = $('.flag_publi').val();
             var query = '';
 
             $('.btn-submit').on('click', function(){
@@ -433,6 +435,29 @@
                 });
 
             })
+
+            $('.link-publication').on('click', function(e){
+                e.preventDefault();
+                if(flag_publi){
+                    if(localStorage.clickcount){
+                        if(localStorage.clickcount >= 10){
+                            alert('llego a su limite para ver publicaciones, puede registrarse y ver sin restricciones :)');
+                            
+                        }else{
+                            localStorage.clickcount = Number(localStorage.clickcount) + 1;
+                            window.open($(this).attr('href'), '_blank');
+
+                        }
+                    }else{
+                        localStorage.clickcount = 1;
+                        window.open($(this).attr('href'), '_blank');
+                    }
+                }else{
+                    window.open($(this).attr('href'), '_blank');
+                }
+            })
+
+
         })
     </script>
 </body>

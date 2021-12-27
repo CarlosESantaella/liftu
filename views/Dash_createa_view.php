@@ -63,18 +63,18 @@
                                             Artículo creado correctamente.!
                                         </div>
                                         <?php endif; ?>
-                                        <form class="row" method="post"
+                                        <form id="form-data" class="row" method="post"
                                             action="<?= $_ENV['ROOT'] ?>/controllers/actions/article/create.php" enctype="multipart/form-data">
                                             <!-- <h3 class="col-12 text-navy">Datos basicos del inmueble</h3> -->
 
                                             <div class="mb-3 col-sm-6 col-lg-4">
                                                 <label for="">Titulo de artículo</label>
-                                                <input type="text" class="form-control" name="title">
+                                                <input type="text" class="form-control" name="title" required>
                                             </div>
                                             <div class="mb-3 col-sm-6 col-lg-4">
                                                 <label for="">Tipo de artículo</label>
-                                                <select name="type" class="form-control" id="">
-                                                    <option value="0">Seleccione una opción</option>
+                                                <select name="type" class="form-control" id="" required>
+                                                    <option value="">Seleccione una opción</option>
                                                     <option value="1">Noticias</option>
                                                     <option value="2">Talleres y Charlas</option>
                                                     <option value="3">Cursos web</option>
@@ -85,7 +85,7 @@
                                             </div>
                                             <div class="mb-3 col-sm-6 col-lg-4">
                                                 <label for="">Descripción corta</label>
-                                                <textarea name="description-short" class="form-control"></textarea>
+                                                <textarea name="description-short" class="form-control" required></textarea>
                                             </div>
                                             <div class="mb-3 col-12">
                                                 <label for="">Descripción</label>
@@ -93,7 +93,7 @@
                                             </div>
                                             <div class="mb-3 col-sm-6 col-lg-4">
                                                 <label for="">Link</label>
-                                                <input type="text" class="form-control" name="link">
+                                                <input type="text" class="form-control" name="link" required>
                                             </div>
                                             <div class="mb-3 col-sm-6 col-lg-4">
                                                 <label for="">Imagen</label>
@@ -101,7 +101,7 @@
                                                     <div class="custom-file">
                                                         <input style="overflow:hidden;" type="file" accept="image/*" name="image" class="custom-file-input"
                                                             id="inputGroupFile01"
-                                                            aria-describedby="inputGroupFileAddon01">
+                                                            aria-describedby="inputGroupFileAddon01" required>
                                                         <label class="custom-file-label" for="inputGroupFile01">Elige la imagen</label>
                                                     </div>
                                                 </div>
@@ -111,7 +111,7 @@
                                             </div>
                                             <div class="mb-3 col-sm-6 col-lg-4">
                                                 <label for="">Fecha de creación</label>
-                                                <input type="date" class="form-control" name="create-date">
+                                                <input type="date" class="form-control" name="create-date"  value="<?= date('Y-m-d') ?>" required>
                                             </div>
                                             <div class="col-12 text-center">
                                                 <button type="submit" class="btn btn-primary">Guardar</button>
@@ -149,9 +149,12 @@
     <!-- Custom and plugin javascript -->
     <script src="<?= $_ENV['ROOT'] ?>/assets/js/inspinia.js"></script>
     <script src="<?= $_ENV['ROOT'] ?>/assets/js/plugins/pace/pace.min.js"></script>
+    <script src="<?= $_ENV['ROOT'] ?>/assets/js/jquery.validate.min.js"></script>
+    <script src="<?= $_ENV['ROOT'] ?>/assets/js/messages_es.js"></script>
 
     <-- Init Trumbowyg -->
         <script>
+            $('#form-data').validate();
             // Doing this in a loaded JS file is better, I put this here for simplicity
             $('#my-editor').trumbowyg({
                 svgPath: '/assets/css/icons.svg',

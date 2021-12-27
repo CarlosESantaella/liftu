@@ -8,10 +8,29 @@
     $usersM = new Users;
     $publicationsM = new Publications;
 
+    $flag_publi = false;
+    
     $publications = $publicationsM->get_publications();
-
     $num_total_rows = $publicationsM->count_publications_query('');
     define('NUM_ITEMS_BY_PAGE', 7);
+    
+    if(isset($_SESSION['id'])){
+        $user = $usersM->get_user_by_id($_SESSION['id']);
+        if(!isset($user['name'])){
+            $option = $publicationsM->get_configuration();
+            if($option['limit_publi'] == 1){
+                
+                $flag_publi = true;
+            }
+        }
+    }else{
+        $option = $publicationsM->get_configuration();
+        if($option['limit_publi'] == 1){
+            
+            $flag_publi = true;
+        }
+    }
+
 
     if ($num_total_rows > 0) {
         $page = false;
@@ -36,10 +55,7 @@
         // echo '<h3>Mostrando la pagina '.$page.' de ' .$total_pages.' paginas.</h3>';
         $query = '';
         $results = $publicationsM->get_publications_query($query, $start, NUM_ITEMS_BY_PAGE);
-        if(isset($_SESSION['id'])){
-
-            $user = $usersM->get_user_by_id($_SESSION['id']);
-        }
+        
    
             // echo '<ul class="row items">';
             // foreach ($results as $row) {

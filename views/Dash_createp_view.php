@@ -62,17 +62,17 @@
                                     Publicación creada correctamente.!
                                 </div>
                             <?php endif; ?>
-                            <form class="row" method="post" action="<?= $_ENV['ROOT'] ?>/controllers/actions/publication/create.php" >
+                            <form class="row" id="form-data" method="post" action="<?= $_ENV['ROOT'] ?>/controllers/actions/publication/create.php" >
                                 <!-- <h3 class="col-12 text-navy">Datos basicos del inmueble</h3> -->
                                 
                                 <div class="mb-3 col-sm-6 col-lg-4">
                                     <label for="">Titulo de publicación</label>
-                                    <input type="text" class="form-control" name="title">
+                                    <input type="text" class="form-control" name="title" required>
                                 </div>
                                 <div class="mb-3 col-sm-6 col-lg-4">
                                     <label for="">Tipo de publicación</label>
-                                    <select name="type" class="form-control" id="">
-                                        <option value="0">Seleccione una opción</option>
+                                    <select name="type" class="form-control" id="" required>
+                                        <option value="">Seleccione una opción</option>
                                         <option value="1">Prácticas</option>
                                         <option value="2">1eros empleos</option>
                                         <option value="3">Profesionales</option>
@@ -88,12 +88,12 @@
                                 </div>
                                 <div class="mb-3 col-sm-6 col-lg-4">
                                     <label for="">Link</label>
-                                    <input type="text" class="form-control" name="link">
+                                    <input type="text" class="form-control" name="link" required>
                                 </div>
                                 <div class="mb-3 col-sm-6 col-lg-4">
                                     <label for="">Región</label>
-                                    <select name="region" class="form-control" id="">
-                                        <option value="0">Seleccione una opción</option>
+                                    <select name="region" class="form-control" id="" required>
+                                        <option value="">Seleccione una opción</option>
                                         <option value="1">XV - Arica y Parinacota</option>
                                         <option value="2">I - Tarapacá</option>
                                         <option value="3">II - Antofagasta</option>
@@ -114,7 +114,7 @@
                                 </div>
                                 <div class="mb-3 col-sm-6 col-lg-4">
                                     <label for="">Fecha de creación</label>
-                                    <input type="date" class="form-control" name="create-date">
+                                    <input type="date" class="form-control" name="create-date" value="<?= date('Y-m-d') ?>" required>
                                 </div>
                                 <div class="col-12 text-center">
                                     <button type="submit" class="btn btn-primary">Guardar</button>
@@ -152,9 +152,12 @@
 <!-- Custom and plugin javascript -->
 <script src="<?= $_ENV['ROOT'] ?>/assets/js/inspinia.js"></script>
 <script src="<?= $_ENV['ROOT'] ?>/assets/js/plugins/pace/pace.min.js"></script>
+<script src="<?= $_ENV['ROOT'] ?>/assets/js/jquery.validate.min.js"></script>
+<script src="<?= $_ENV['ROOT'] ?>/assets/js/messages_es.js"></script>
 
 <-- Init Trumbowyg -->
 <script>
+    $('#form-data').validate();
     // Doing this in a loaded JS file is better, I put this here for simplicity
     $('#my-editor').trumbowyg({
         svgPath: '/assets/css/icons.svg',
